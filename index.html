@@ -3,163 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi-on.xyz | Claviers Mécaniques 60%</title>
+    <title>Chi-On.xyz | Claviers Mécaniques 60%</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* --- LE STYLE (CSS) --- */
         body {
-            background-color: #121212; /* Fond très sombre */
-            color: #e0e0e0; /* Texte clair */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000000;
+            color: #e0e0e0;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
         }
 
         /* En-tête */
         header {
-            background-color: #1e1e1e;
-            padding: 20px;
+            background-color: #0a0a0a;
+            padding: 15px 40px; /* Un peu moins de hauteur pour coller au logo */
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #00f2ff; /* Ligne néon bleu */
+            border-bottom: 2px solid #ce181e; /* Le rouge exact de ton logo */
         }
 
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #00f2ff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+        /* Style pour l'image du logo */
+        .logo img {
+            height: 60px; /* Taille ajustée pour l'en-tête */
+            width: auto;
+            display: block; /* Évite les espaces vides sous l'image */
         }
 
         nav a {
-            color: white;
+            color: #e0e0e0;
             text-decoration: none;
-            margin-left: 20px;
+            margin-left: 30px;
             font-weight: 500;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            transition: color 0.3s;
         }
 
-        /* Section Héro (Bannière) */
+        nav a:hover {
+            color: #ce181e; /* Rouge au survol */
+        }
+
+        /* Section Héro */
         .hero {
             text-align: center;
-            padding: 100px 20px;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1595225476474-87563907a212?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            padding: 120px 20px;
+            /* Image de fond sombre style tech */
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?q=80&w=2000&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
         }
 
         h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5em;
+            font-weight: 900;
+            font-style: italic;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+        
+        h1 span {
+            color: #ce181e; /* Rouge du logo */
         }
 
         .cta-button {
-            background-color: #ff0055; /* Rose néon */
-            color: white;
-            padding: 15px 30px;
+            background-color: #ce181e;
+            color: #ffffff;
+            padding: 15px 40px;
             text-decoration: none;
-            border-radius: 5px;
             font-weight: bold;
+            font-size: 1.1em;
             transition: 0.3s;
             display: inline-block;
-            margin-top: 20px;
+            margin-top: 30px;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+            font-style: italic;
         }
 
         .cta-button:hover {
-            background-color: #d60047;
-            transform: scale(1.05);
+            background-color: #a50f14;
+            transform: skew(-10deg); /* Petit effet penché au survol pour le style */
         }
 
         /* Grille de produits */
         .container {
             max-width: 1200px;
-            margin: 50px auto;
+            margin: 60px auto;
             padding: 0 20px;
         }
 
-        h2 { text-align: center; border-bottom: 1px solid #333; padding-bottom: 20px; }
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2em;
+            font-weight: 900;
+            font-style: italic;
+            text-align: center;
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            color: #fff;
+        }
 
         .product-grid {
             display: flex;
-            gap: 20px;
+            gap: 30px;
             justify-content: center;
             flex-wrap: wrap;
         }
 
         .product-card {
-            background-color: #1e1e1e;
-            border: 1px solid #333;
-            border-radius: 10px;
+            background-color: #111;
+            border: 1px solid #222;
             width: 300px;
             padding: 20px;
             text-align: center;
             transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .product-card:hover {
-            border-color: #00f2ff;
-            box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+            border-color: #ce181e;
+            transform: translateY(-5px);
+        }
+
+        .product-card img {
+            width: 100%;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        .product-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-style: italic;
+            font-size: 1.2em;
+            margin: 10px 0;
+            color: white;
+        }
+
+        .product-card p {
+            color: #aaa;
+            font-size: 0.9em;
+            line-height: 1.4;
         }
 
         .price {
-            font-size: 1.5em;
-            color: #00f2ff;
-            margin: 10px 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.6em;
+            font-weight: 900;
+            font-style: italic;
+            color: #ce181e;
+            margin: 15px 0;
             display: block;
         }
 
         /* Pied de page */
         footer {
             text-align: center;
-            padding: 20px;
-            background-color: #000;
-            color: #666;
-            margin-top: 50px;
+            padding: 40px;
+            background-color: #050505;
+            color: #555;
+            margin-top: 80px;
+            border-top: 1px solid #222;
+            font-size: 0.8em;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">CHI-ON.XYZ</div>
+        <div class="logo">
+            <img src="logo.png" alt="Logo Chi-On">
+        </div>
+
         <nav>
             <a href="#">Accueil</a>
             <a href="#">Claviers</a>
-            <a href="#">Keycaps</a>
-            <a href="#">Panier (0)</a>
+            <a href="#">Switches</a>
+            <a href="#">Panier</a>
         </nav>
     </header>
 
     <div class="hero">
-        <h1>La Frappe Parfaite.</h1>
-        <p>Découvrez notre collection de claviers 60% pour puristes.</p>
-        <a href="#shop" class="cta-button">Voir la boutique</a>
+        <h1>Dominez<br><span>Le Jeu</span>.</h1>
+        <p>Performance mécanique pure. Design 60% sans compromis.</p>
+        <a href="#shop" class="cta-button">Découvrir</a>
     </div>
 
     <div class="container" id="shop">
-        <h2>Nos Best-Sellers</h2>
+        <h2>Nouveautés</h2>
         
         <div class="product-grid">
             <div class="product-card">
-                <img src="https://placehold.co/250x150/333/FFF?text=Clavier+Neon+60" alt="Clavier 1" style="width:100%; border-radius:5px;">
-                <h3>Neon 60 - Red Switch</h3>
-                <p>Format compact, switches linéaires, rétroéclairage RGB complet.</p>
+                <img src="https://placehold.co/300x200/222/ce181e?text=Chi-On+Red" alt="Clavier 1">
+                <h3>Chi-On Origins</h3>
+                <p>Switches Red Linéaires. Réactivité maximale pour le gaming compétitif.</p>
                 <span class="price">89.99 €</span>
-                <a href="#" class="cta-button" style="padding: 10px 20px; font-size: 0.9em;">Ajouter au panier</a>
+                <a href="#" class="cta-button" style="padding: 10px 20px; font-size: 0.9em; margin-top:0;">Acheter</a>
             </div>
 
             <div class="product-card">
-                <img src="https://placehold.co/250x150/333/FFF?text=Stealth+Pro" alt="Clavier 2" style="width:100%; border-radius:5px;">
-                <h3>Stealth Pro - Brown Switch</h3>
-                <p>Tactile et silencieux. Boitier en aluminium brossé.</p>
-                <span class="price">129.99 €</span>
-                <a href="#" class="cta-button" style="padding: 10px 20px; font-size: 0.9em;">Ajouter au panier</a>
+                <img src="https://placehold.co/300x200/222/ce181e?text=Chi-On+Blue" alt="Clavier 2">
+                <h3>Chi-On Clicky</h3>
+                <p>Switches Blue Clicky. Le son satisfaisant pour la frappe précise.</p>
+                <span class="price">89.99 €</span>
+                <a href="#" class="cta-button" style="padding: 10px 20px; font-size: 0.9em; margin-top:0;">Acheter</a>
+            </div>
+             <div class="product-card">
+                <img src="https://placehold.co/300x200/222/ce181e?text=Custom+Caps" alt="Clavier 3">
+                <h3>Keycaps PBT</h3>
+                <p>Set complet de touches PBT double injection. Ne s'efface jamais.</p>
+                <span class="price">39.99 €</span>
+                <a href="#" class="cta-button" style="padding: 10px 20px; font-size: 0.9em; margin-top:0;">Acheter</a>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2025 Chi-on.xyz - Spécialiste du Clavier Mécanique.</p>
+        <p>&copy; 2025 Chi-On.xyz <br> Claviers Mécaniques pour Passionnés.</p>
     </footer>
 
 </body>
