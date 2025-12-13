@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi-on.xyz | Claviers Mécaniques 60%</title>
+    <style>
+        /* --- LE STYLE (CSS) --- */
+        body {
+            background-color: #121212; /* Fond très sombre */
+            color: #e0e0e0; /* Texte clair */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* En-tête */
+        header {
+            background-color: #1e1e1e;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #00f2ff; /* Ligne néon bleu */
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00f2ff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+        }
+
+        /* Section Héro (Bannière) */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1595225476474-87563907a212?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .cta-button {
+            background-color: #ff0055; /* Rose néon */
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background-color: #d60047;
+            transform: scale(1.05);
+        }
+
+        /* Grille de produits */
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        h2 { text-align: center; border-bottom: 1px solid #333; padding-bottom: 20px; }
+
+        .product-grid {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .product-card {
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 10px;
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            border-color: #00f2ff;
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+        }
+
+        .price {
+            font-size: 1.5em;
+            color: #00f2ff;
+            margin: 10px 0;
+            display: block;
+        }
+
+        /* Pied de page */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #000;
+            color: #666;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">CHI-ON.XYZ</div>
+        <nav>
+            <a href="#">Accueil</a>
+            <a href="#">Claviers</a>
+            <a href="#">Keycaps</a>
+            <a href="#">Panier (0)</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>La Frappe Parfaite.</h1>
+        <p>Découvrez notre collection de claviers 60% pour puristes.</p>
+        <a href="#shop" class="cta-button">Voir la boutique</a>
+    </div>
+
+    <div class="container" id="shop">
+        <h2>Nos Best-Sellers</h2>
+        
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://placehold.co/250x150/333/FFF?text=Clavier+Neon+60" alt="Clavier 1" style="width:100%; border-radius:5px;">
+                <h3>Neon 60 - Red Switch</h3>
+                <p>Format compact, switches linéaires, rétroéclairage RGB complet.</p>
+                <span class="price">89.99 €</span>
+                <a href="#" class="cta-button" style="padding: 10px 20px; font-size: 0.9em;">Ajouter au panier</a>
+            </div>
+
+            <div class="product-card">
+                <img src="https://placehold.co/250x150/333/FFF?text=Stealth+Pro" alt="Clavier 2" style="width:100%; border-radius:5px;">
+                <h3>Stealth Pro - Brown Switch</h3>
+                <p>Tactile et silencieux. Boitier en aluminium brossé.</p>
+                <span class="price">129.99 €</span>
+                <a href="#" class="cta-button" style="padding: 10px 20px; font-size: 0.9em;">Ajouter au panier</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Chi-on.xyz - Spécialiste du Clavier Mécanique.</p>
+    </footer>
+
+</body>
+</html>
