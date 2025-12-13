@@ -3,113 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi-On.xyz | Claviers Mécaniques 60%</title>
+    <title>Chi-On.xyz | Claviers Mécaniques & Accessoires</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="logo.png" type="image/png">
+    
     <style>
         /* --- LE STYLE (CSS) --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: #000000;
+            background-color: #050505;
             color: #e0e0e0;
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
+            line-height: 1.6;
         }
 
-        /* En-tête */
+        /* En-tête Fixe (Sticky) */
         header {
-            background-color: #0a0a0a;
-            padding: 15px 40px; /* Un peu moins de hauteur pour coller au logo */
+            background-color: rgba(10, 10, 10, 0.95);
+            padding: 10px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #ce181e; /* Le rouge exact de ton logo */
+            border-bottom: 2px solid #ce181e;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
         }
 
-        /* Style pour l'image du logo */
         .logo img {
-            height: 60px; /* Taille ajustée pour l'en-tête */
+            height: 50px;
             width: auto;
-            display: block; /* Évite les espaces vides sous l'image */
+            display: block;
+            transition: transform 0.3s;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
         }
 
         nav a {
-            color: #e0e0e0;
+            color: #ffffff;
             text-decoration: none;
             margin-left: 30px;
-            font-weight: 500;
+            font-weight: 600;
             font-family: 'Montserrat', sans-serif;
             text-transform: uppercase;
-            font-size: 0.9em;
-            transition: color 0.3s;
+            font-size: 0.85em;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #ce181e;
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
         }
 
         nav a:hover {
-            color: #ce181e; /* Rouge au survol */
+            color: #ce181e;
         }
 
         /* Section Héro */
         .hero {
             text-align: center;
-            padding: 120px 20px;
-            /* Image de fond sombre style tech */
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?q=80&w=2000&auto=format&fit=crop');
+            padding: 140px 20px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('clavier.jpg');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
         }
 
         h1 {
             font-family: 'Montserrat', sans-serif;
-            font-size: 3.5em;
+            font-size: 4em;
             font-weight: 900;
             font-style: italic;
             color: #ffffff;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             text-transform: uppercase;
-            line-height: 1.1;
+            line-height: 1;
+            text-shadow: 0 0 20px rgba(0,0,0,0.8);
         }
         
         h1 span {
-            color: #ce181e; /* Rouge du logo */
+            color: #ce181e;
+            text-shadow: 0 0 20px rgba(206, 24, 30, 0.6);
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            color: #cccccc;
         }
 
         .cta-button {
             background-color: #ce181e;
             color: #ffffff;
-            padding: 15px 40px;
+            padding: 15px 50px;
             text-decoration: none;
             font-weight: bold;
             font-size: 1.1em;
             transition: 0.3s;
             display: inline-block;
-            margin-top: 30px;
             text-transform: uppercase;
             font-family: 'Montserrat', sans-serif;
             font-style: italic;
+            border: 2px solid #ce181e;
         }
 
         .cta-button:hover {
-            background-color: #a50f14;
-            transform: skew(-10deg); /* Petit effet penché au survol pour le style */
+            background-color: transparent;
+            color: #ce181e;
+            box-shadow: 0 0 20px rgba(206, 24, 30, 0.6);
+            transform: translateY(-3px);
+        }
+
+        /* Section Avantages */
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            padding: 40px 20px;
+            background-color: #0f0f0f;
+            text-align: center;
+            flex-wrap: wrap;
+        }
+        .feature-item {
+            max-width: 250px;
+        }
+        .feature-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #ce181e;
         }
 
         /* Grille de produits */
         .container {
             max-width: 1200px;
-            margin: 60px auto;
+            margin: 80px auto;
             padding: 0 20px;
         }
 
         h2 {
             font-family: 'Montserrat', sans-serif;
-            font-size: 2em;
+            font-size: 2.5em;
             font-weight: 900;
             font-style: italic;
             text-align: center;
-            border-bottom: 1px solid #333;
-            padding-bottom: 20px;
-            margin-bottom: 40px;
+            padding-bottom: 10px;
+            margin-bottom: 60px;
             text-transform: uppercase;
             color: #fff;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: #ce181e;
+            margin: 20px auto 0;
         }
 
         .product-grid {
@@ -122,44 +194,58 @@
         .product-card {
             background-color: #111;
             border: 1px solid #222;
-            width: 300px;
-            padding: 20px;
+            width: 320px;
+            padding: 0;
             text-align: center;
-            transition: 0.3s;
+            transition: all 0.4s ease;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            overflow: hidden;
+            position: relative;
         }
 
         .product-card:hover {
             border-color: #ce181e;
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(206, 24, 30, 0.2);
         }
 
         .product-card img {
             width: 100%;
-            border-radius: 4px;
-            margin-bottom: 15px;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #222;
+        }
+
+        .card-content {
+            padding: 25px;
         }
 
         .product-card h3 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
             font-style: italic;
-            font-size: 1.2em;
-            margin: 10px 0;
+            font-size: 1.4em;
+            margin: 0 0 10px 0;
             color: white;
         }
 
-        .product-card p {
-            color: #aaa;
-            font-size: 0.9em;
-            line-height: 1.4;
+        .badge {
+            background-color: #ce181e;
+            color: white;
+            padding: 5px 10px;
+            font-size: 0.7em;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            text-transform: uppercase;
         }
 
         .price {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.6em;
+            font-size: 1.8em;
             font-weight: 900;
             font-style: italic;
             color: #ce181e;
@@ -167,15 +253,52 @@
             display: block;
         }
 
+        .buy-btn {
+            background-color: #fff;
+            color: #000;
+            display: block;
+            padding: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .buy-btn:hover {
+            background-color: #ce181e;
+            color: #fff;
+        }
+
         /* Pied de page */
         footer {
             text-align: center;
-            padding: 40px;
-            background-color: #050505;
+            padding: 60px 20px;
+            background-color: #080808;
             color: #555;
-            margin-top: 80px;
+            margin-top: 100px;
             border-top: 1px solid #222;
-            font-size: 0.8em;
+        }
+        
+        /* ADAPTATION MOBILE */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px;
+            }
+            nav {
+                margin-top: 15px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            nav a {
+                margin: 0 5px;
+                font-size: 0.8em;
+            }
+            h1 { font-size: 2.5em; }
+            .hero { padding: 80px 20px; }
         }
     </style>
 </head>
@@ -188,49 +311,77 @@
 
         <nav>
             <a href="#">Accueil</a>
-            <a href="#">Claviers</a>
-            <a href="#">Switches</a>
-            <a href="#">Panier</a>
+            <a href="#shop">Nos Claviers</a>
+            <a href="#">Customisation</a>
+            <a href="#">Support</a>
         </nav>
     </header>
 
     <div class="hero">
         <h1>Dominez<br><span>Le Jeu</span>.</h1>
-        <p>Performance mécanique pure. Design 60% sans compromis.</p>
-        <a href="#shop" class="cta-button">Découvrir</a>
+        <p>L'excellence du format 60%.</p>
+        <a href="#shop" class="cta-button">Voir la collection</a>
+    </div>
+
+    <div class="features">
+        <div class="feature-item">
+            <div class="feature-icon">🚀</div>
+            <h3>Expédition Rapide</h3>
+            <p>Depuis la Belgique & France.</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">💎</div>
+            <h3>Qualité Premium</h3>
+            <p>Châssis Alu & Keycaps PBT.</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">🔧</div>
+            <h3>Hot-Swappable</h3>
+            <p>Changez vos switches à l'infini.</p>
+        </div>
     </div>
 
     <div class="container" id="shop">
-        <h2>Nouveautés</h2>
+        <h2>La Sélection Belge</h2>
         
         <div class="product-grid">
             <div class="product-card">
-                <img src="https://placehold.co/300x200/222/ce181e?text=Chi-On+Red" alt="Clavier 1">
-                <h3>Chi-On Origins</h3>
-                <p>Switches Red Linéaires. Réactivité maximale pour le gaming compétitif.</p>
-                <span class="price">89.99 €</span>
-                <a href="#" class="cta-button" style="padding: 10px 20px; font-size: 0.9em; margin-top:0;">Acheter</a>
+                <span class="badge">Exclusif BE</span>
+                <img src="https://placehold.co/400x300/1a1a1a/ce181e?text=Neon+60+AZERTY+BE" alt="Clavier Belge">
+                <div class="card-content">
+                    <h3>Chi-On Neon 60 (BE)</h3>
+                    <p><strong>Layout AZERTY Belge.</strong> Switches Red Linéaires. La disposition native pour les gamers belges.</p>
+                    <span class="price">94.99 €</span>
+                    <a href="#" class="buy-btn">Ajouter au panier</a>
+                </div>
             </div>
 
             <div class="product-card">
-                <img src="https://placehold.co/300x200/222/ce181e?text=Chi-On+Blue" alt="Clavier 2">
-                <h3>Chi-On Clicky</h3>
-                <p>Switches Blue Clicky. Le son satisfaisant pour la frappe précise.</p>
-                <span class="price">89.99 €</span>
-                <a href="#" class="cta-button" style="padding: 10px 20px; font-size: 0.9em; margin-top:0;">Acheter</a>
+                <img src="https://placehold.co/400x300/1a1a1a/ce181e?text=Stealth+Pro+ISO" alt="Clavier 2">
+                <div class="card-content">
+                    <h3>Stealth Pro (ISO)</h3>
+                    <p>Format ISO compatible touches BE/FR. Switches Brown Tactiles. Silence et confort.</p>
+                    <span class="price">129.99 €</span>
+                    <a href="#" class="buy-btn">Ajouter au panier</a>
+                </div>
             </div>
-             <div class="product-card">
-                <img src="https://placehold.co/300x200/222/ce181e?text=Custom+Caps" alt="Clavier 3">
-                <h3>Keycaps PBT</h3>
-                <p>Set complet de touches PBT double injection. Ne s'efface jamais.</p>
-                <span class="price">39.99 €</span>
-                <a href="#" class="cta-button" style="padding: 10px 20px; font-size: 0.9em; margin-top:0;">Acheter</a>
+
+            <div class="product-card">
+                <span class="badge">Nouveau</span>
+                <img src="https://placehold.co/400x300/1a1a1a/ce181e?text=Keycaps+BE" alt="Clavier 3">
+                <div class="card-content">
+                    <h3>Keycaps AZERTY BE</h3>
+                    <p>Set de touches PBT complet avec les accents et caractères spéciaux belges.</p>
+                    <span class="price">44.99 €</span>
+                    <a href="#" class="buy-btn">Ajouter au panier</a>
+                </div>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2025 Chi-On.xyz <br> Claviers Mécaniques pour Passionnés.</p>
+        <p>&copy; 2025 <strong>Chi-On.xyz</strong>. Conçu pour la performance.</p>
+        <p style="font-size: 0.8em; margin-top: 10px;">Mentions Légales | CGV | Contact</p>
     </footer>
 
 </body>
