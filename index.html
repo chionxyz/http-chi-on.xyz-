@@ -89,6 +89,7 @@
             align-items: center;
             gap: 10px;
             cursor: pointer;
+            margin-left: 20px; /* Marge par défaut sur PC */
         }
         .cart-btn:hover { border-color: #ce181e; color: #fff; }
         .cart-count {
@@ -312,12 +313,55 @@
         .footer-link { color: #666; text-decoration: none; font-size: 0.85em; font-family: 'Montserrat', sans-serif; font-weight: 600; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
         .footer-link:hover { color: #fff; text-shadow: 0 0 10px rgba(206, 24, 30, 0.8); }
 
+        /* --- OPTIMISATIONS MOBILE (Le grand nettoyage) --- */
         @media (max-width: 768px) {
-            header { flex-direction: column; padding: 15px; }
-            nav { margin-top: 15px; flex-wrap: wrap; justify-content: center; gap: 15px; }
-            .cart-sidebar { width: 85%; }
-            .contact-box { padding: 20px; }
+            header { 
+                padding: 15px 10px; 
+                flex-direction: column; 
+            }
+            
+            nav { 
+                margin-top: 15px; 
+                flex-wrap: wrap; 
+                justify-content: center; 
+                gap: 10px; 
+                width: 100%;
+            }
+
+            nav a { 
+                margin: 2px; 
+                font-size: 0.75em; /* Texte plus petit pour que ça rentre */
+                padding: 5px 8px;
+                background: rgba(255,255,255,0.05); /* Petite touche pro */
+                border-radius: 4px;
+            }
+
+            /* Panier devient une barre rouge en bas du menu */
+            .cart-btn {
+                margin-left: 0;
+                margin-top: 15px;
+                width: 100%; /* Prend toute la largeur */
+                justify-content: center;
+                background-color: #ce181e; /* Fond rouge */
+                color: white;
+            }
+
+            /* Configurateur : Boutons verticaux (fini l'écrasement !) */
+            .options-grid {
+                flex-direction: column;
+            }
+            
+            .option-btn {
+                width: 100%; /* Pleine largeur */
+                padding: 15px; /* Facile à cliquer avec le doigt */
+                text-align: center;
+                margin-bottom: 5px;
+            }
+
             .config-wrapper { flex-direction: column; }
+            .cart-sidebar { width: 100%; } /* Panier plein écran sur mobile */
+            .contact-box { padding: 20px; }
+            .config-preview img { max-width: 100%; }
         }
     </style>
 </head>
@@ -335,7 +379,7 @@
             <a href="#" onclick="switchTab('faq')" id="nav-faq">FAQ</a>
             <a href="#" onclick="switchTab('support')" id="nav-support">Contact</a>
             
-            <a onclick="toggleCart()" class="cart-btn" style="margin-left: 20px;">
+            <a onclick="toggleCart()" class="cart-btn">
                 <span>Panier</span>
                 <span id="cart-count" class="cart-count">0</span>
             </a>
@@ -443,6 +487,7 @@
                         <div class="options-grid">
                             <button class="option-btn selected" onclick="selectOption('switch', 'Red Linear', 0, this)">Red (Rapide)</button>
                             <button class="option-btn" onclick="selectOption('switch', 'Brown Tactile', 0, this)">Brown (Tactile)</button>
+                            <button class="option-btn" onclick="selectOption('switch', 'Blue Clicky', 0, this)">Blue (Clicky)</button>
                             <button class="option-btn" onclick="selectOption('switch', 'Silent Red', 15, this)">Silent Red (+15€)</button>
                         </div>
                     </div>
@@ -560,7 +605,7 @@
 
     <script>
         /* --- URL FORMSPREE À REMPLACER --- */
-        const formspreeUrl = "https://formspree.io/f/https://formspree.io/f/xanrvglk"; 
+        const formspreeUrl = "https://formspree.io/f/VOTRE_ID_ICI"; 
 
         /* --- GESTION DES ONGLETS --- */
         function switchTab(tabId) {
