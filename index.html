@@ -79,7 +79,7 @@
         nav a:hover::after, nav a.active::after { width: 100%; }
         nav a:hover, nav a.active { color: #ce181e; }
 
-        /* BOUTON PANIER (Header) */
+        /* BOUTON PANIER */
         .cart-btn {
             background-color: #1a1a1a;
             padding: 8px 15px;
@@ -88,6 +88,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            cursor: pointer;
         }
         .cart-btn:hover { border-color: #ce181e; color: #fff; }
         .cart-count {
@@ -105,7 +106,6 @@
             animation: fadeIn 0.5s ease-in-out;
             flex: 1;
         }
-
         .page-section.active { display: block; }
 
         @keyframes fadeIn {
@@ -134,11 +134,7 @@
             line-height: 1;
             text-shadow: 0 0 20px rgba(0,0,0,0.8);
         }
-        
-        h1 span {
-            color: #ce181e;
-            text-shadow: 0 0 20px rgba(206, 24, 30, 0.6);
-        }
+        h1 span { color: #ce181e; text-shadow: 0 0 20px rgba(206, 24, 30, 0.6); }
 
         .hero p {
             font-size: 1.2em;
@@ -204,23 +200,10 @@
             position: relative;
             margin-top: 40px;
         }
-        
-        h2::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: #ce181e;
-            margin: 20px auto 0;
-        }
+        h2::after { content: ''; display: block; width: 60px; height: 4px; background: #ce181e; margin: 20px auto 0; }
 
         /* --- PRODUITS --- */
-        .product-grid {
-            display: flex;
-            gap: 30px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+        .product-grid { display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; }
 
         .product-card {
             background-color: #111;
@@ -253,7 +236,6 @@
         .badge { background-color: #ce181e; color: white; padding: 5px 10px; font-size: 0.7em; font-weight: bold; position: absolute; top: 10px; right: 10px; text-transform: uppercase; }
         .price { font-family: 'Montserrat', sans-serif; font-size: 1.8em; font-weight: 900; font-style: italic; color: #ce181e; margin: 15px 0; display: block; }
         
-        /* Bouton Ajouter au panier */
         .buy-btn { 
             background-color: #fff; 
             color: #000; 
@@ -271,184 +253,61 @@
         }
         .buy-btn:hover { background-color: #ce181e; color: #fff; }
 
-        /* --- PANIER LATÉRAL (SIDEBAR) --- */
-        .cart-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 2000;
-            opacity: 0;
-            visibility: hidden;
-            transition: 0.3s;
-        }
+        /* --- CONFIGURATEUR --- */
+        .config-wrapper { display: flex; flex-wrap: wrap; gap: 40px; background: #111; padding: 30px; border: 1px solid #222; }
+        .config-preview { flex: 1; min-width: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #080808; padding: 20px; border: 1px solid #222; }
+        .config-preview img { width: 100%; max-width: 400px; }
+        .config-options { flex: 1; min-width: 300px; }
         
+        .option-group { margin-bottom: 25px; }
+        .option-title { color: #ce181e; font-weight: bold; margin-bottom: 10px; display: block; text-transform: uppercase; font-family: 'Montserrat', sans-serif; }
+        .options-grid { display: flex; gap: 10px; flex-wrap: wrap; }
+        .option-btn { background: #1a1a1a; border: 1px solid #333; color: #aaa; padding: 10px 20px; cursor: pointer; font-family: 'Roboto', sans-serif; font-weight: bold; transition: 0.3s; flex: 1; min-width: 80px; }
+        .option-btn:hover { border-color: #ce181e; color: #fff; }
+        .option-btn.selected { background: #ce181e; color: #fff; border-color: #ce181e; box-shadow: 0 0 15px rgba(206,24,30,0.4); }
+        .live-price { font-size: 2.5em; color: #fff; font-weight: 900; font-family: 'Montserrat'; font-style: italic; margin-top: 20px; }
+        .live-price span { color: #ce181e; }
+
+        /* --- PANIER LATÉRAL --- */
+        .cart-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 2000; opacity: 0; visibility: hidden; transition: 0.3s; }
         .cart-overlay.open { opacity: 1; visibility: visible; }
-
-        .cart-sidebar {
-            position: fixed;
-            top: 0;
-            right: -400px;
-            width: 350px;
-            height: 100%;
-            background-color: #0a0a0a;
-            border-left: 2px solid #ce181e;
-            z-index: 2001;
-            transition: right 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0);
-            display: flex;
-            flex-direction: column;
-            box-shadow: -5px 0 30px rgba(0,0,0,0.8);
-        }
-
+        .cart-sidebar { position: fixed; top: 0; right: -400px; width: 350px; height: 100%; background-color: #0a0a0a; border-left: 2px solid #ce181e; z-index: 2001; transition: right 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0); display: flex; flex-direction: column; box-shadow: -5px 0 30px rgba(0,0,0,0.8); }
         .cart-sidebar.open { right: 0; }
-
-        .cart-header {
-            padding: 20px;
-            border-bottom: 1px solid #222;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .cart-header h3 { margin: 0; font-family: 'Montserrat'; font-style: italic; }
+        .cart-header { padding: 20px; border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center; }
         .close-cart { background: none; border: none; color: #fff; font-size: 1.5em; cursor: pointer; }
-        .close-cart:hover { color: #ce181e; }
-
-        .cart-items {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #222;
-        }
+        .cart-items { flex: 1; padding: 20px; overflow-y: auto; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #222; }
         .cart-item-info h4 { margin: 0 0 5px 0; font-size: 1em; }
         .cart-item-price { color: #888; font-size: 0.9em; }
-
-        .cart-footer {
-            padding: 20px;
-            background-color: #111;
-            border-top: 1px solid #222;
-        }
-        .cart-total {
-            display: flex;
-            justify-content: space-between;
-            font-size: 1.2em;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
+        .cart-footer { padding: 20px; background-color: #111; border-top: 1px solid #222; }
+        .cart-total { display: flex; justify-content: space-between; font-size: 1.2em; font-weight: bold; margin-bottom: 20px; }
         .cart-total span:last-child { color: #ce181e; }
-
-        /* Notification Toast */
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #ce181e;
-            color: white;
-            padding: 15px 25px;
-            border-radius: 4px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            transform: translateY(100px);
-            opacity: 0;
-            transition: 0.3s;
-            z-index: 3000;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .toast { position: fixed; bottom: 30px; right: 30px; background-color: #ce181e; color: white; padding: 15px 25px; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); transform: translateY(100px); opacity: 0; transition: 0.3s; z-index: 3000; font-weight: bold; display: flex; align-items: center; gap: 10px; }
         .toast.show { transform: translateY(0); opacity: 1; }
 
-        /* --- STYLES FORMULAIRE --- */
-        .contact-box {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #111;
-            padding: 40px;
-            border: 1px solid #222;
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            color: #ce181e;
-            font-weight: 700;
-            font-family: 'Montserrat', sans-serif;
-            margin-bottom: 8px;
-            font-size: 0.9em;
-            text-transform: uppercase;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 15px;
-            background-color: #080808;
-            border: 1px solid #333;
-            color: #fff;
-            font-family: 'Roboto', sans-serif;
-            font-size: 1em;
-            box-sizing: border-box;
-            transition: 0.3s;
-        }
-
-        .form-input:focus {
-            border-color: #ce181e;
-            outline: none;
-            box-shadow: 0 0 15px rgba(206, 24, 30, 0.2);
-            background-color: #0a0a0a;
-        }
-
-        textarea.form-input {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        .success-message {
-            display: none;
-            background-color: #111;
-            border: 1px solid #ce181e;
-            color: #fff;
-            padding: 30px;
-            text-align: center;
-        }
-
+        /* --- STYLES FORMULAIRE & FAQ --- */
+        .contact-box { max-width: 600px; margin: 0 auto; background-color: #111; padding: 40px; border: 1px solid #222; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group label { display: block; color: #ce181e; font-weight: 700; font-family: 'Montserrat', sans-serif; margin-bottom: 8px; font-size: 0.9em; text-transform: uppercase; }
+        .form-input { width: 100%; padding: 15px; background-color: #080808; border: 1px solid #333; color: #fff; font-family: 'Roboto', sans-serif; font-size: 1em; box-sizing: border-box; transition: 0.3s; }
+        .form-input:focus { border-color: #ce181e; outline: none; box-shadow: 0 0 15px rgba(206, 24, 30, 0.2); background-color: #0a0a0a; }
+        textarea.form-input { resize: vertical; min-height: 150px; }
+        .success-message { display: none; background-color: #111; border: 1px solid #ce181e; color: #fff; padding: 30px; text-align: center; }
         .success-icon { font-size: 3em; color: #ce181e; margin-bottom: 10px; }
-        
-        /* Styles texte légal */
-        .legal-text {
-            text-align: left;
-            background: #111;
-            padding: 40px;
-            border: 1px solid #222;
-        }
-        .legal-text h3 {
-            color: #ce181e;
-            font-family: 'Montserrat', sans-serif;
-            margin-top: 30px;
-        }
 
-        /* --- PIED DE PAGE --- */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            background-color: #080808;
-            color: #555;
-            border-top: 1px solid #222;
-            margin-top: auto;
-        }
+        .faq-container { max-width: 800px; margin: 0 auto 50px auto; text-align: left; }
+        .faq-item { background: #111; margin-bottom: 10px; border: 1px solid #222; transition: 0.3s; }
+        .faq-item[open] { border-color: #ce181e; }
+        .faq-item summary { padding: 20px; cursor: pointer; font-weight: bold; font-family: 'Montserrat', sans-serif; list-style: none; position: relative; color: #e0e0e0; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after { content: '+'; position: absolute; right: 20px; color: #ce181e; font-size: 1.5em; top: 50%; transform: translateY(-50%); font-weight: bold; }
+        .faq-item[open] summary::after { content: '-'; }
+        .faq-content { padding: 0 20px 20px 20px; color: #aaa; font-size: 0.95em; line-height: 1.6; }
+
+        .legal-text { text-align: left; background: #111; padding: 40px; border: 1px solid #222; }
+        .legal-text h3 { color: #ce181e; font-family: 'Montserrat', sans-serif; margin-top: 30px; }
+
+        footer { text-align: center; padding: 40px 20px; background-color: #080808; color: #555; border-top: 1px solid #222; margin-top: auto; }
         .footer-links { margin-top: 25px; display: flex; justify-content: center; gap: 30px; }
         .footer-link { color: #666; text-decoration: none; font-size: 0.85em; font-family: 'Montserrat', sans-serif; font-weight: 600; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
         .footer-link:hover { color: #fff; text-shadow: 0 0 10px rgba(206, 24, 30, 0.8); }
@@ -458,6 +317,7 @@
             nav { margin-top: 15px; flex-wrap: wrap; justify-content: center; gap: 15px; }
             .cart-sidebar { width: 85%; }
             .contact-box { padding: 20px; }
+            .config-wrapper { flex-direction: column; }
         }
     </style>
 </head>
@@ -472,10 +332,11 @@
             <a href="#" onclick="switchTab('accueil')" id="nav-accueil" class="active">Accueil</a>
             <a href="#" onclick="switchTab('claviers')" id="nav-claviers">Nos Claviers</a>
             <a href="#" onclick="switchTab('custom')" id="nav-custom">Customisation</a>
-            <a href="#" onclick="switchTab('support')" id="nav-support">Support</a>
+            <a href="#" onclick="switchTab('faq')" id="nav-faq">FAQ</a>
+            <a href="#" onclick="switchTab('support')" id="nav-support">Contact</a>
             
             <a onclick="toggleCart()" class="cart-btn" style="margin-left: 20px;">
-                <span>🛒</span>
+                <span>Panier</span>
                 <span id="cart-count" class="cart-count">0</span>
             </a>
         </nav>
@@ -556,38 +417,103 @@
     </div>
 
     <div id="page-custom" class="page-section">
-        <div class="container placeholder-page">
-            <h2>Customisation</h2>
-            <p>Le configurateur de clavier arrive bientôt.</p>
-            <div style="font-size: 3em;">🎨</div>
+        <div class="container">
+            <h2>Créez le Vôtre</h2>
+            
+            <div class="config-wrapper">
+                <div class="config-preview">
+                    <img src="clavier.jpg" alt="Aperçu Clavier Custom" style="border-radius: 5px; margin-bottom: 20px;">
+                    <p style="color:#aaa;">*Image non contractuelle.</p>
+                    <div class="live-price" id="custom-price-display">99.00 <span>€</span></div>
+                    <button class="cta-button" style="width: 100%; border:none; margin-top:20px;" onclick="addCustomToCart()">Ajouter cette config</button>
+                </div>
+
+                <div class="config-options">
+                    <div class="option-group">
+                        <span class="option-title">1. Châssis (Base)</span>
+                        <div class="options-grid">
+                            <button class="option-btn selected" onclick="selectOption('chassis', 'Standard Black', 0, this)">Standard Black</button>
+                            <button class="option-btn" onclick="selectOption('chassis', 'Arctic White', 10, this)">Arctic White (+10€)</button>
+                            <button class="option-btn" onclick="selectOption('chassis', 'Alu Premium', 30, this)">Alu Premium (+30€)</button>
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <span class="option-title">2. Switches (Mécanique)</span>
+                        <div class="options-grid">
+                            <button class="option-btn selected" onclick="selectOption('switch', 'Red Linear', 0, this)">Red (Rapide)</button>
+                            <button class="option-btn" onclick="selectOption('switch', 'Brown Tactile', 0, this)">Brown (Tactile)</button>
+                            <button class="option-btn" onclick="selectOption('switch', 'Silent Red', 15, this)">Silent Red (+15€)</button>
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <span class="option-title">3. Disposition</span>
+                        <div class="options-grid">
+                            <button class="option-btn selected" onclick="selectOption('layout', 'ISO FR/BE', 0, this)">ISO (Grande Entrée)</button>
+                            <button class="option-btn" onclick="selectOption('layout', 'ANSI US', 0, this)">ANSI (Petite Entrée)</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-faq" class="page-section">
+        <div class="container">
+            <h2>Foire Aux Questions</h2>
+            <div class="faq-container">
+                <details class="faq-item">
+                    <summary>Quels sont les délais de livraison en Belgique ?</summary>
+                    <div class="faq-content">Nous expédions généralement sous 24h ouvrées. La livraison prend en moyenne 2 à 3 jours ouvrables via Bpost ou Mondial Relay.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Les claviers sont-ils compatibles PS5 / Xbox ?</summary>
+                    <div class="faq-content">Oui, tous nos modèles filaires USB-C sont plug-and-play et fonctionnent parfaitement sur consoles modernes, PC et Mac.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Quelle est la politique de retour ?</summary>
+                    <div class="faq-content">Vous disposez de 14 jours après réception pour nous retourner le produit dans son emballage d'origine.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Comment suivre ma commande ?</summary>
+                    <div class="faq-content">Un numéro de suivi vous est envoyé par email dès que le colis est remis au transporteur.</div>
+                </details>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <p style="color: #888;">Vous n'avez pas trouvé la réponse ?</p>
+                <button onclick="switchTab('support')" class="cta-button">Contactez le Support</button>
+            </div>
         </div>
     </div>
 
     <div id="page-support" class="page-section">
         <div class="container">
-            <h2>Contactez le Support</h2>
-            <p style="text-align: center; margin-bottom: 40px; color: #aaa;">Une question sur votre commande ou un conseil technique ?</p>
+            <h2>Contactez-nous</h2>
+            <p style="text-align: center; margin-bottom: 40px; color: #aaa;">Notre équipe est là pour vous aider.</p>
             
             <div class="contact-box" id="contact-container">
-                <form id="contactForm" onsubmit="envoyerFormulaire(event)">
+                <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                    
                     <div class="form-group">
                         <label for="nom">Nom / Pseudo</label>
-                        <input type="text" id="nom" class="form-input" placeholder="Votre nom" required>
+                        <input type="text" name="name" id="nom" class="form-input" placeholder="Votre nom" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="email">Adresse Email</label>
-                        <input type="email" id="email" class="form-input" placeholder="exemple@email.com" required>
+                        <input type="email" name="email" id="email" class="form-input" placeholder="exemple@email.com" required>
                     </div>
 
                     <div class="form-group">
                         <label for="sujet">Sujet</label>
-                        <input type="text" id="sujet" class="form-input" placeholder="Numéro de commande, Question..." required>
+                        <input type="text" name="subject" id="sujet" class="form-input" placeholder="Numéro de commande, Question..." required>
                     </div>
 
                     <div class="form-group">
                         <label for="message">Message</label>
-                        <textarea id="message" class="form-input" placeholder="Comment pouvons-nous vous aider ?" required></textarea>
+                        <textarea name="message" id="message" class="form-input" placeholder="Comment pouvons-nous vous aider ?" required></textarea>
                     </div>
 
                     <button type="submit" class="cta-button" style="width: 100%; border: none; margin-top: 10px;">Envoyer le message</button>
@@ -597,7 +523,7 @@
             <div id="success-message" class="contact-box success-message">
                 <div class="success-icon">✓</div>
                 <h3 style="color: #fff; margin-bottom: 15px;">Message Envoyé !</h3>
-                <p>Merci de nous avoir contactés. L'équipe Chi-On vous répondra sous 24h à l'adresse indiquée.</p>
+                <p>Merci de nous avoir contactés. L'équipe Chi-On vous répondra sous 24h.</p>
                 <button onclick="resetForm()" class="buy-btn" style="background:transparent; color:#ce181e; border: 1px solid #ce181e; margin: 20px auto 0; display:inline-block;">Envoyer un autre message</button>
             </div>
         </div>
@@ -608,14 +534,8 @@
             <h2>Mentions Légales</h2>
             <div class="legal-text">
                 <h3>1. Éditeur du site</h3>
-                <p>Le site Chi-On.xyz est édité par Ouachikh, domicilié en Belgique.</p>
+                <p>Le site Chi-On.xyz est édité par [Votre Nom ou Société], domicilié en Belgique.</p>
                 <p>Email : chionxyz@outlook.com</p>
-
-                <h3>2. Hébergement</h3>
-                <p>Le site est hébergé par Ouachikh Mohamed, chionxyz@outlook.com.</p>
-
-                <h3>3. Propriété Intellectuelle</h3>
-                <p>L'ensemble de ce site relève de la législation belge et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés.</p>
             </div>
         </div>
     </div>
@@ -626,15 +546,6 @@
             <div class="legal-text">
                 <h3>1. Objet</h3>
                 <p>Les présentes CGV régissent les ventes de claviers et accessoires par Chi-On.xyz.</p>
-
-                <h3>2. Prix</h3>
-                <p>Les prix de nos produits sont indiqués en euros toutes taxes comprises (TTC), sauf indication contraire.</p>
-
-                <h3>3. Livraison</h3>
-                <p>Les produits sont livrés à l'adresse de livraison indiquée au cours du processus de commande, dans le délai indiqué sur la page de validation de la commande.</p>
-                
-                <h3>4. Rétractation</h3>
-                <p>Conformément à la législation en vigueur, vous disposez d'un délai de 14 jours pour exercer votre droit de rétractation.</p>
             </div>
         </div>
     </div>
@@ -648,92 +559,98 @@
     </footer>
 
     <script>
+        /* --- URL FORMSPREE À REMPLACER --- */
+        const formspreeUrl = "https://formspree.io/f/https://formspree.io/f/xanrvglk"; 
+
         /* --- GESTION DES ONGLETS --- */
         function switchTab(tabId) {
             document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
             document.querySelectorAll('nav a').forEach(l => l.classList.remove('active'));
-            
             const p = document.getElementById('page-' + tabId);
             if(p) p.classList.add('active');
-            
             const n = document.getElementById('nav-' + tabId);
             if(n) n.classList.add('active');
-            
             window.scrollTo(0, 0);
+        }
+
+        /* --- LOGIQUE DU CONFIGURATEUR --- */
+        let customState = { basePrice: 99.00, chassisName: "Standard Black", chassisPrice: 0, switchName: "Red Linear", switchPrice: 0, layoutName: "ISO FR/BE", layoutPrice: 0 };
+        function selectOption(category, name, price, btn) {
+            customState[category + 'Name'] = name; customState[category + 'Price'] = price;
+            let parent = btn.parentElement;
+            for(let sib of parent.getElementsByClassName('option-btn')) { sib.classList.remove('selected'); }
+            btn.classList.add('selected');
+            updateCustomPrice();
+        }
+        function updateCustomPrice() {
+            let total = customState.basePrice + customState.chassisPrice + customState.switchPrice + customState.layoutPrice;
+            document.getElementById('custom-price-display').innerHTML = total.toFixed(2) + ' <span>€</span>';
+        }
+        function addCustomToCart() {
+            let fullName = `Custom: ${customState.chassisName} / ${customState.switchName}`;
+            let finalPrice = customState.basePrice + customState.chassisPrice + customState.switchPrice + customState.layoutPrice;
+            addToCart(fullName, finalPrice);
         }
 
         /* --- GESTION DU PANIER --- */
         let cart = [];
-
-        function toggleCart() {
-            const sidebar = document.getElementById('cart-sidebar');
-            const overlay = document.getElementById('cart-overlay');
-            sidebar.classList.toggle('open');
-            overlay.classList.toggle('open');
-        }
-
-        function addToCart(name, price) {
-            cart.push({ name: name, price: price });
-            updateCartUI();
-            showToast();
-        }
-
+        function toggleCart() { document.getElementById('cart-sidebar').classList.toggle('open'); document.getElementById('cart-overlay').classList.toggle('open'); }
+        function addToCart(name, price) { cart.push({ name: name, price: price }); updateCartUI(); showToast(); }
         function updateCartUI() {
-            const cartItemsContainer = document.getElementById('cart-items');
-            const cartCount = document.getElementById('cart-count');
-            const cartTotal = document.getElementById('cart-total-price');
-            
-            cartCount.innerText = cart.length;
-
-            cartItemsContainer.innerHTML = '';
+            const container = document.getElementById('cart-items');
+            document.getElementById('cart-count').innerText = cart.length;
+            container.innerHTML = '';
             let total = 0;
-
-            if(cart.length === 0) {
-                cartItemsContainer.innerHTML = '<p style="text-align: center; color: #555; margin-top: 50px;">Votre panier est vide.</p>';
-            } else {
+            if(cart.length === 0) { container.innerHTML = '<p style="text-align: center; color: #555; margin-top: 50px;">Votre panier est vide.</p>'; } 
+            else {
                 cart.forEach((item, index) => {
                     total += item.price;
-                    const itemElement = document.createElement('div');
-                    itemElement.className = 'cart-item';
-                    itemElement.innerHTML = `
-                        <div class="cart-item-info">
-                            <h4>${item.name}</h4>
-                            <span class="cart-item-price">${item.price} €</span>
-                        </div>
-                        <button onclick="removeFromCart(${index})" style="background:none; border:none; color:#555; cursor:pointer;">🗑️</button>
-                    `;
-                    cartItemsContainer.appendChild(itemElement);
+                    const el = document.createElement('div');
+                    el.className = 'cart-item';
+                    el.innerHTML = `<div class="cart-item-info"><h4>${item.name}</h4><span class="cart-item-price">${item.price.toFixed(2)} €</span></div><button onclick="removeFromCart(${index})" style="background:none; border:none; color:#555; cursor:pointer;">🗑️</button>`;
+                    container.appendChild(el);
                 });
             }
-            cartTotal.innerText = total.toFixed(2) + ' €';
+            document.getElementById('cart-total-price').innerText = total.toFixed(2) + ' €';
+        }
+        function removeFromCart(index) { cart.splice(index, 1); updateCartUI(); }
+        function showToast() { const t = document.getElementById('toast'); t.classList.add('show'); setTimeout(() => { t.classList.remove('show'); }, 3000); }
+
+        /* --- ENVOI FORMSPREE (AJAX) --- */
+        async function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const data = new FormData(form);
+            
+            // Vérification
+            if(formspreeUrl.includes("VOTRE_ID_ICI")) {
+                alert("Erreur : N'oubliez pas de mettre votre lien Formspree dans le code !");
+                return;
+            }
+
+            try {
+                const response = await fetch(formspreeUrl, {
+                    method: 'POST',
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                });
+                
+                if (response.ok) {
+                    document.getElementById('contact-container').style.display='none';
+                    document.getElementById('success-message').style.display='block';
+                } else {
+                    alert("Oups ! Une erreur s'est produite.");
+                }
+            } catch (error) {
+                alert("Erreur réseau. Veuillez réessayer.");
+            }
         }
 
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartUI();
-        }
-
-        function showToast() {
-            const toast = document.getElementById('toast');
-            toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
-        }
-
-        /* --- GESTION DU FORMULAIRE --- */
-        function envoyerFormulaire(e) {
-            e.preventDefault();
-            document.getElementById('contact-container').style.display='none';
-            document.getElementById('success-message').style.display='block';
-        }
         function resetForm() {
             document.getElementById('contactForm').reset();
             document.getElementById('success-message').style.display='none';
             document.getElementById('contact-container').style.display='block';
         }
     </script>
-
 </body>
 </html>
-
