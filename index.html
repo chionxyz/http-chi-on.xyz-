@@ -54,7 +54,7 @@
         nav a {
             color: #ffffff;
             text-decoration: none;
-            margin-left: 30px;
+            margin-left: 20px; /* Réduit pour gagner de la place */
             font-weight: 600;
             font-family: 'Montserrat', sans-serif;
             text-transform: uppercase;
@@ -87,32 +87,25 @@
             border: 1px solid #333;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             cursor: pointer;
-            margin-left: 20px; /* Marge par défaut sur PC */
+            margin-left: 15px;
+            font-size: 0.9em;
         }
         .cart-btn:hover { border-color: #ce181e; color: #fff; }
         .cart-count {
             background-color: #ce181e;
             color: white;
             font-size: 0.8em;
-            padding: 2px 6px;
+            padding: 1px 6px;
             border-radius: 50%;
             font-weight: bold;
         }
 
         /* --- SYSTÈME DE PAGES --- */
-        .page-section {
-            display: none;
-            animation: fadeIn 0.5s ease-in-out;
-            flex: 1;
-        }
+        .page-section { display: none; animation: fadeIn 0.5s ease-in-out; flex: 1; }
         .page-section.active { display: block; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* Section Héro */
         .hero {
@@ -123,135 +116,32 @@
             background-position: center;
             background-attachment: fixed;
         }
-
-        h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 4em;
-            font-weight: 900;
-            font-style: italic;
-            color: #ffffff;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            line-height: 1;
-            text-shadow: 0 0 20px rgba(0,0,0,0.8);
-        }
+        h1 { font-family: 'Montserrat', sans-serif; font-size: 4em; font-weight: 900; font-style: italic; color: #ffffff; margin-bottom: 10px; text-transform: uppercase; line-height: 1; text-shadow: 0 0 20px rgba(0,0,0,0.8); }
         h1 span { color: #ce181e; text-shadow: 0 0 20px rgba(206, 24, 30, 0.6); }
-
-        .hero p {
-            font-size: 1.2em;
-            max-width: 600px;
-            margin: 0 auto 40px auto;
-            color: #cccccc;
-        }
-
-        .cta-button {
-            background-color: #ce181e;
-            color: #ffffff;
-            padding: 15px 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1em;
-            transition: 0.3s;
-            display: inline-block;
-            text-transform: uppercase;
-            font-family: 'Montserrat', sans-serif;
-            font-style: italic;
-            border: 2px solid #ce181e;
-            cursor: pointer;
-            border-radius: 0;
-        }
-
-        .cta-button:hover {
-            background-color: transparent;
-            color: #ce181e;
-            box-shadow: 0 0 20px rgba(206, 24, 30, 0.6);
-            transform: translateY(-3px);
-        }
+        .hero p { font-size: 1.2em; max-width: 600px; margin: 0 auto 40px auto; color: #cccccc; }
+        .cta-button { background-color: #ce181e; color: #ffffff; padding: 15px 50px; text-decoration: none; font-weight: bold; font-size: 1.1em; transition: 0.3s; display: inline-block; text-transform: uppercase; font-family: 'Montserrat', sans-serif; font-style: italic; border: 2px solid #ce181e; cursor: pointer; border-radius: 0; }
+        .cta-button:hover { background-color: transparent; color: #ce181e; box-shadow: 0 0 20px rgba(206, 24, 30, 0.6); transform: translateY(-3px); }
 
         /* Features */
-        .features {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            padding: 40px 20px;
-            background-color: #0f0f0f;
-            text-align: center;
-            flex-wrap: wrap;
-        }
+        .features { display: flex; justify-content: center; gap: 50px; padding: 40px 20px; background-color: #0f0f0f; text-align: center; flex-wrap: wrap; }
         .feature-item { max-width: 250px; }
         .feature-icon { font-size: 2em; margin-bottom: 10px; color: #ce181e; }
 
-        /* Container & Titres */
-        .container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.5em;
-            font-weight: 900;
-            font-style: italic;
-            text-align: center;
-            padding-bottom: 10px;
-            margin-bottom: 60px;
-            text-transform: uppercase;
-            color: #fff;
-            position: relative;
-            margin-top: 40px;
-        }
+        /* Container */
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        h2 { font-family: 'Montserrat', sans-serif; font-size: 2.5em; font-weight: 900; font-style: italic; text-align: center; padding-bottom: 10px; margin-bottom: 60px; text-transform: uppercase; color: #fff; position: relative; margin-top: 40px; }
         h2::after { content: ''; display: block; width: 60px; height: 4px; background: #ce181e; margin: 20px auto 0; }
 
         /* --- PRODUITS --- */
         .product-grid { display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; }
-
-        .product-card {
-            background-color: #111;
-            border: 1px solid #222;
-            width: 320px;
-            text-align: center;
-            transition: all 0.4s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .product-card:hover {
-            border-color: #ce181e;
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(206, 24, 30, 0.2);
-        }
-
-        .product-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-bottom: 1px solid #222;
-        }
-
+        .product-card { background-color: #111; border: 1px solid #222; width: 320px; text-align: center; transition: all 0.4s ease; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; position: relative; }
+        .product-card:hover { border-color: #ce181e; transform: translateY(-10px); box-shadow: 0 10px 30px rgba(206, 24, 30, 0.2); }
+        .product-card img { width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid #222; }
         .card-content { padding: 25px; }
         .product-card h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-style: italic; font-size: 1.4em; margin: 0 0 10px 0; color: white; }
         .badge { background-color: #ce181e; color: white; padding: 5px 10px; font-size: 0.7em; font-weight: bold; position: absolute; top: 10px; right: 10px; text-transform: uppercase; }
         .price { font-family: 'Montserrat', sans-serif; font-size: 1.8em; font-weight: 900; font-style: italic; color: #ce181e; margin: 15px 0; display: block; }
-        
-        .buy-btn { 
-            background-color: #fff; 
-            color: #000; 
-            display: block; 
-            padding: 12px; 
-            text-decoration: none; 
-            font-weight: bold; 
-            text-transform: uppercase; 
-            margin-top: 10px; 
-            transition: 0.3s;
-            border: none;
-            width: 100%;
-            cursor: pointer;
-            font-family: 'Roboto', sans-serif;
-        }
+        .buy-btn { background-color: #fff; color: #000; display: block; padding: 12px; text-decoration: none; font-weight: bold; text-transform: uppercase; margin-top: 10px; transition: 0.3s; border: none; width: 100%; cursor: pointer; font-family: 'Roboto', sans-serif; }
         .buy-btn:hover { background-color: #ce181e; color: #fff; }
 
         /* --- CONFIGURATEUR --- */
@@ -263,7 +153,12 @@
         .option-group { margin-bottom: 25px; }
         .option-title { color: #ce181e; font-weight: bold; margin-bottom: 10px; display: block; text-transform: uppercase; font-family: 'Montserrat', sans-serif; }
         .options-grid { display: flex; gap: 10px; flex-wrap: wrap; }
-        .option-btn { background: #1a1a1a; border: 1px solid #333; color: #aaa; padding: 10px 20px; cursor: pointer; font-family: 'Roboto', sans-serif; font-weight: bold; transition: 0.3s; flex: 1; min-width: 80px; }
+        
+        .option-btn { 
+            background: #1a1a1a; border: 1px solid #333; color: #aaa; padding: 10px 20px; cursor: pointer; 
+            font-family: 'Roboto', sans-serif; font-weight: bold; transition: 0.3s; flex: 1; min-width: 80px; 
+            white-space: nowrap; /* Empêche le texte de sauter de ligne */
+        }
         .option-btn:hover { border-color: #ce181e; color: #fff; }
         .option-btn.selected { background: #ce181e; color: #fff; border-color: #ce181e; box-shadow: 0 0 15px rgba(206,24,30,0.4); }
         .live-price { font-size: 2.5em; color: #fff; font-weight: 900; font-family: 'Montserrat'; font-style: italic; margin-top: 20px; }
@@ -295,7 +190,6 @@
         textarea.form-input { resize: vertical; min-height: 150px; }
         .success-message { display: none; background-color: #111; border: 1px solid #ce181e; color: #fff; padding: 30px; text-align: center; }
         .success-icon { font-size: 3em; color: #ce181e; margin-bottom: 10px; }
-
         .faq-container { max-width: 800px; margin: 0 auto 50px auto; text-align: left; }
         .faq-item { background: #111; margin-bottom: 10px; border: 1px solid #222; transition: 0.3s; }
         .faq-item[open] { border-color: #ce181e; }
@@ -304,7 +198,6 @@
         .faq-item summary::after { content: '+'; position: absolute; right: 20px; color: #ce181e; font-size: 1.5em; top: 50%; transform: translateY(-50%); font-weight: bold; }
         .faq-item[open] summary::after { content: '-'; }
         .faq-content { padding: 0 20px 20px 20px; color: #aaa; font-size: 0.95em; line-height: 1.6; }
-
         .legal-text { text-align: left; background: #111; padding: 40px; border: 1px solid #222; }
         .legal-text h3 { color: #ce181e; font-family: 'Montserrat', sans-serif; margin-top: 30px; }
 
@@ -313,55 +206,57 @@
         .footer-link { color: #666; text-decoration: none; font-size: 0.85em; font-family: 'Montserrat', sans-serif; font-weight: 600; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
         .footer-link:hover { color: #fff; text-shadow: 0 0 10px rgba(206, 24, 30, 0.8); }
 
-        /* --- OPTIMISATIONS MOBILE (Le grand nettoyage) --- */
+        /* --- OPTIMISATIONS MOBILE (Compact & Propre) --- */
         @media (max-width: 768px) {
+            /* 1. HEADER COMPACT */
             header { 
-                padding: 15px 10px; 
-                flex-direction: column; 
+                padding: 10px 5px; 
+                flex-direction: column;
             }
-            
+            .logo img { height: 40px; } /* Logo un peu plus petit */
+
             nav { 
-                margin-top: 15px; 
+                margin-top: 10px; 
                 flex-wrap: wrap; 
                 justify-content: center; 
-                gap: 10px; 
-                width: 100%;
+                gap: 5px; /* Espacement réduit */
             }
 
             nav a { 
-                margin: 2px; 
-                font-size: 0.75em; /* Texte plus petit pour que ça rentre */
+                margin: 0; 
+                font-size: 0.7em; /* Police plus petite */
                 padding: 5px 8px;
-                background: rgba(255,255,255,0.05); /* Petite touche pro */
+                background: rgba(255,255,255,0.08); /* Petit fond pour délimiter */
                 border-radius: 4px;
             }
+            nav a::after { display: none; } /* Enlève la ligne rouge au survol pour plus de clarté */
+            nav a.active { background: #ce181e; color: white; } /* Style actif plus visible */
 
-            /* Panier devient une barre rouge en bas du menu */
             .cart-btn {
-                margin-left: 0;
-                margin-top: 15px;
-                width: 100%; /* Prend toute la largeur */
-                justify-content: center;
-                background-color: #ce181e; /* Fond rouge */
-                color: white;
+                margin-left: 5px;
+                padding: 5px 10px;
+                font-size: 0.75em;
+                background: none; /* Fond transparent pour s'intégrer */
+                border: 1px solid #333;
             }
 
-            /* Configurateur : Boutons verticaux (fini l'écrasement !) */
+            /* 2. CONFIGURATEUR COMPACT (2 par ligne) */
             .options-grid {
-                flex-direction: column;
+                flex-direction: row; /* Garde l'alignement horizontal */
+                flex-wrap: wrap; /* Autorise le retour à la ligne */
+                gap: 5px; /* Petit espace */
             }
             
             .option-btn {
-                width: 100%; /* Pleine largeur */
-                padding: 15px; /* Facile à cliquer avec le doigt */
-                text-align: center;
-                margin-bottom: 5px;
+                flex: 1 1 45%; /* Chaque bouton prend environ 45% de la largeur (donc 2 par ligne) */
+                min-width: auto;
+                padding: 10px 5px; /* Padding réduit */
+                font-size: 0.8em; /* Police réduite */
+                margin: 0;
             }
 
-            .config-wrapper { flex-direction: column; }
-            .cart-sidebar { width: 100%; } /* Panier plein écran sur mobile */
-            .contact-box { padding: 20px; }
-            .config-preview img { max-width: 100%; }
+            .config-wrapper { padding: 15px; }
+            .cart-sidebar { width: 90%; }
         }
     </style>
 </head>
@@ -374,13 +269,13 @@
 
         <nav>
             <a href="#" onclick="switchTab('accueil')" id="nav-accueil" class="active">Accueil</a>
-            <a href="#" onclick="switchTab('claviers')" id="nav-claviers">Nos Claviers</a>
-            <a href="#" onclick="switchTab('custom')" id="nav-custom">Customisation</a>
+            <a href="#" onclick="switchTab('claviers')" id="nav-claviers">Claviers</a>
+            <a href="#" onclick="switchTab('custom')" id="nav-custom">Custom</a>
             <a href="#" onclick="switchTab('faq')" id="nav-faq">FAQ</a>
             <a href="#" onclick="switchTab('support')" id="nav-support">Contact</a>
             
             <a onclick="toggleCart()" class="cart-btn">
-                <span>Panier</span>
+                <span>🛒</span>
                 <span id="cart-count" class="cart-count">0</span>
             </a>
         </nav>
@@ -485,10 +380,10 @@
                     <div class="option-group">
                         <span class="option-title">2. Switches (Mécanique)</span>
                         <div class="options-grid">
-                            <button class="option-btn selected" onclick="selectOption('switch', 'Red Linear', 0, this)">Red (Rapide)</button>
-                            <button class="option-btn" onclick="selectOption('switch', 'Brown Tactile', 0, this)">Brown (Tactile)</button>
-                            <button class="option-btn" onclick="selectOption('switch', 'Blue Clicky', 0, this)">Blue (Clicky)</button>
-                            <button class="option-btn" onclick="selectOption('switch', 'Silent Red', 15, this)">Silent Red (+15€)</button>
+                            <button class="option-btn selected" onclick="selectOption('switch', 'Red Linear', 0, this)">Red</button>
+                            <button class="option-btn" onclick="selectOption('switch', 'Brown Tactile', 0, this)">Brown</button>
+                            <button class="option-btn" onclick="selectOption('switch', 'Blue Clicky', 0, this)">Blue</button>
+                            <button class="option-btn" onclick="selectOption('switch', 'Silent Red', 15, this)">Silent (+15€)</button>
                         </div>
                     </div>
 
