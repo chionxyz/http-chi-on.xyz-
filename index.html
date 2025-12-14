@@ -9,9 +9,7 @@
     
     <style>
         /* --- LE STYLE (CSS) --- */
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             background-color: #050505;
@@ -20,9 +18,12 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        /* En-tête Fixe (Sticky) */
+        /* En-tête Fixe */
         header {
             background-color: rgba(10, 10, 10, 0.95);
             padding: 10px 40px;
@@ -42,11 +43,10 @@
             width: auto;
             display: block;
             transition: transform 0.3s;
+            cursor: pointer;
         }
 
-        .logo img:hover {
-            transform: scale(1.05);
-        }
+        .logo img:hover { transform: scale(1.05); }
 
         nav a {
             color: #ffffff;
@@ -59,6 +59,7 @@
             letter-spacing: 1px;
             transition: all 0.3s;
             position: relative;
+            cursor: pointer; /* Indique que c'est cliquable */
         }
 
         nav a::after {
@@ -72,12 +73,28 @@
             transition: width 0.3s;
         }
 
-        nav a:hover::after {
+        nav a:hover::after, nav a.active::after {
             width: 100%;
         }
 
-        nav a:hover {
+        nav a:hover, nav a.active {
             color: #ce181e;
+        }
+
+        /* --- SYSTÈME DE PAGES (Cacher/Montrer) --- */
+        .page-section {
+            display: none; /* Par défaut, tout est caché */
+            animation: fadeIn 0.5s ease-in-out;
+            flex: 1;
+        }
+
+        .page-section.active {
+            display: block; /* Seule la section active s'affiche */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Section Héro */
@@ -127,6 +144,7 @@
             font-family: 'Montserrat', sans-serif;
             font-style: italic;
             border: 2px solid #ce181e;
+            cursor: pointer;
         }
 
         .cta-button:hover {
@@ -146,19 +164,13 @@
             text-align: center;
             flex-wrap: wrap;
         }
-        .feature-item {
-            max-width: 250px;
-        }
-        .feature-icon {
-            font-size: 2em;
-            margin-bottom: 10px;
-            color: #ce181e;
-        }
+        .feature-item { max-width: 250px; }
+        .feature-icon { font-size: 2em; margin-bottom: 10px; color: #ce181e; }
 
         /* Grille de produits */
         .container {
             max-width: 1200px;
-            margin: 80px auto;
+            margin: 40px auto;
             padding: 0 20px;
         }
 
@@ -173,6 +185,7 @@
             text-transform: uppercase;
             color: #fff;
             position: relative;
+            margin-top: 40px;
         }
         
         h2::after {
@@ -195,7 +208,6 @@
             background-color: #111;
             border: 1px solid #222;
             width: 320px;
-            padding: 0;
             text-align: center;
             transition: all 0.4s ease;
             display: flex;
@@ -218,85 +230,33 @@
             border-bottom: 1px solid #222;
         }
 
-        .card-content {
-            padding: 25px;
-        }
-
-        .product-card h3 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-style: italic;
-            font-size: 1.4em;
-            margin: 0 0 10px 0;
-            color: white;
-        }
-
-        .badge {
-            background-color: #ce181e;
-            color: white;
-            padding: 5px 10px;
-            font-size: 0.7em;
-            font-weight: bold;
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            text-transform: uppercase;
-        }
-
-        .price {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.8em;
-            font-weight: 900;
-            font-style: italic;
-            color: #ce181e;
-            margin: 15px 0;
-            display: block;
-        }
-
-        .buy-btn {
-            background-color: #fff;
-            color: #000;
-            display: block;
-            padding: 12px;
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-top: 10px;
-            transition: 0.3s;
-        }
-
-        .buy-btn:hover {
-            background-color: #ce181e;
-            color: #fff;
-        }
+        .card-content { padding: 25px; }
+        .product-card h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-style: italic; font-size: 1.4em; margin: 0 0 10px 0; color: white; }
+        .badge { background-color: #ce181e; color: white; padding: 5px 10px; font-size: 0.7em; font-weight: bold; position: absolute; top: 10px; right: 10px; text-transform: uppercase; }
+        .price { font-family: 'Montserrat', sans-serif; font-size: 1.8em; font-weight: 900; font-style: italic; color: #ce181e; margin: 15px 0; display: block; }
+        .buy-btn { background-color: #fff; color: #000; display: block; padding: 12px; text-decoration: none; font-weight: bold; text-transform: uppercase; margin-top: 10px; transition: 0.3s; }
+        .buy-btn:hover { background-color: #ce181e; color: #fff; }
 
         /* Pied de page */
         footer {
             text-align: center;
-            padding: 60px 20px;
+            padding: 40px 20px;
             background-color: #080808;
             color: #555;
-            margin-top: 100px;
             border-top: 1px solid #222;
+            margin-top: auto;
         }
         
-        /* ADAPTATION MOBILE */
+        /* Placeholder pour les pages vides */
+        .placeholder-page {
+            text-align: center;
+            padding: 100px 20px;
+        }
+        
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                padding: 15px;
-            }
-            nav {
-                margin-top: 15px;
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
-            }
-            nav a {
-                margin: 0 5px;
-                font-size: 0.8em;
-            }
+            header { flex-direction: column; padding: 15px; }
+            nav { margin-top: 15px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+            nav a { margin: 0 5px; font-size: 0.8em; }
             h1 { font-size: 2.5em; }
             .hero { padding: 80px 20px; }
         }
@@ -305,77 +265,97 @@
 <body>
 
     <header>
-        <div class="logo">
+        <div class="logo" onclick="switchTab('accueil')">
             <img src="logo.png" alt="Logo Chi-On">
         </div>
 
         <nav>
-            <a href="#">Accueil</a>
-            <a href="#shop">Nos Claviers</a>
-            <a href="#">Customisation</a>
-            <a href="#">Support</a>
+            <a href="#" onclick="switchTab('accueil')" id="nav-accueil" class="active">Accueil</a>
+            <a href="#" onclick="switchTab('claviers')" id="nav-claviers">Nos Claviers</a>
+            <a href="#" onclick="switchTab('custom')" id="nav-custom">Customisation</a>
+            <a href="#" onclick="switchTab('support')" id="nav-support">Support</a>
         </nav>
     </header>
 
-    <div class="hero">
-        <h1>Dominez<br><span>Le Jeu</span>.</h1>
-        <p>L'excellence du format 60%.</p>
-        <a href="#shop" class="cta-button">Voir la collection</a>
+    <div id="page-accueil" class="page-section active">
+        <div class="hero">
+            <h1>Dominez<br><span>Le Jeu</span>.</h1>
+            <p>L'excellence du format 60%.</p>
+            <a onclick="switchTab('claviers')" class="cta-button">Voir la collection</a>
+        </div>
+
+        <div class="features">
+            <div class="feature-item">
+                <div class="feature-icon"></div>
+                <h3>Expédition Rapide</h3>
+                <p>Depuis la Belgique.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"></div>
+                <h3>Qualité Premium</h3>
+                <p>Châssis Alu & Keycaps PBT.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"></div>
+                <h3>Hot-Swappable</h3>
+                <p>Changez vos switches à l'infini.</p>
+            </div>
+        </div>
     </div>
 
-    <div class="features">
-        <div class="feature-item">
-            <div class="feature-icon">🚀</div>
-            <h3>Expédition Rapide</h3>
-            <p>Depuis la Belgique & France.</p>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon">💎</div>
-            <h3>Qualité Premium</h3>
-            <p>Châssis Alu & Keycaps PBT.</p>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon">🔧</div>
-            <h3>Hot-Swappable</h3>
-            <p>Changez vos switches à l'infini.</p>
+    <div id="page-claviers" class="page-section">
+        <div class="container">
+            <h2>La Sélection Belge</h2>
+            
+            <div class="product-grid">
+                <div class="product-card">
+                    <span class="badge">Exclusif BE</span>
+                    <img src="https://placehold.co/400x300/1a1a1a/ce181e?text=Neon+60+AZERTY+BE" alt="Clavier Belge">
+                    <div class="card-content">
+                        <h3>Chi-On Neon 60 (BE)</h3>
+                        <p><strong>Layout AZERTY Belge.</strong> Switches Red Linéaires. La disposition native pour les gamers belges.</p>
+                        <span class="price">94.99 €</span>
+                        <a href="#" class="buy-btn">Ajouter au panier</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://placehold.co/400x300/1a1a1a/ce181e?text=Stealth+Pro+ISO" alt="Clavier 2">
+                    <div class="card-content">
+                        <h3>Stealth Pro (ISO)</h3>
+                        <p>Format ISO compatible touches BE/FR. Switches Brown Tactiles. Silence et confort.</p>
+                        <span class="price">129.99 €</span>
+                        <a href="#" class="buy-btn">Ajouter au panier</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <span class="badge">Nouveau</span>
+                    <img src="https://placehold.co/400x300/1a1a1a/ce181e?text=Keycaps+BE" alt="Clavier 3">
+                    <div class="card-content">
+                        <h3>Keycaps AZERTY BE</h3>
+                        <p>Set de touches PBT complet avec les accents et caractères spéciaux belges.</p>
+                        <span class="price">44.99 €</span>
+                        <a href="#" class="buy-btn">Ajouter au panier</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="container" id="shop">
-        <h2>La Sélection Belge</h2>
-        
-        <div class="product-grid">
-            <div class="product-card">
-                <span class="badge">Exclusif BE</span>
-                <img src="https://placehold.co/400x300/1a1a1a/ce181e?text=Neon+60+AZERTY+BE" alt="Clavier Belge">
-                <div class="card-content">
-                    <h3>Chi-On Neon 60 (BE)</h3>
-                    <p><strong>Layout AZERTY Belge.</strong> Switches Red Linéaires. La disposition native pour les gamers belges.</p>
-                    <span class="price">94.99 €</span>
-                    <a href="#" class="buy-btn">Ajouter au panier</a>
-                </div>
-            </div>
+    <div id="page-custom" class="page-section">
+        <div class="container placeholder-page">
+            <h2>Customisation</h2>
+            <p>Le configurateur de clavier arrive bientôt.</p>
+            <div style="font-size: 3em;">🎨</div>
+        </div>
+    </div>
 
-            <div class="product-card">
-                <img src="https://placehold.co/400x300/1a1a1a/ce181e?text=Stealth+Pro+ISO" alt="Clavier 2">
-                <div class="card-content">
-                    <h3>Stealth Pro (ISO)</h3>
-                    <p>Format ISO compatible touches BE/FR. Switches Brown Tactiles. Silence et confort.</p>
-                    <span class="price">129.99 €</span>
-                    <a href="#" class="buy-btn">Ajouter au panier</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <span class="badge">Nouveau</span>
-                <img src="https://placehold.co/400x300/1a1a1a/ce181e?text=Keycaps+BE" alt="Clavier 3">
-                <div class="card-content">
-                    <h3>Keycaps AZERTY BE</h3>
-                    <p>Set de touches PBT complet avec les accents et caractères spéciaux belges.</p>
-                    <span class="price">44.99 €</span>
-                    <a href="#" class="buy-btn">Ajouter au panier</a>
-                </div>
-            </div>
+    <div id="page-support" class="page-section">
+        <div class="container placeholder-page">
+            <h2>Support Client</h2>
+            <p>Besoin d'aide ? Contactez-nous à chionxyz@outlook.com</p>
+            <div style="font-size: 3em;"></div>
         </div>
     </div>
 
@@ -383,6 +363,37 @@
         <p>&copy; 2025 <strong>Chi-On.xyz</strong>. Conçu pour la performance.</p>
         <p style="font-size: 0.8em; margin-top: 10px;">Mentions Légales | CGV | Contact</p>
     </footer>
+
+    <script>
+        function switchTab(tabId) {
+            // 1. Cacher toutes les sections
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // 2. Enlever la classe active de tous les liens du menu
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // 3. Afficher la section demandée
+            const activeSection = document.getElementById('page-' + tabId);
+            if(activeSection) {
+                activeSection.classList.add('active');
+            }
+
+            // 4. Mettre en surbrillance le lien du menu cliqué
+            const activeLink = document.getElementById('nav-' + tabId);
+            if(activeLink) {
+                activeLink.classList.add('active');
+            }
+            
+            // 5. Remonter en haut de la page (optionnel mais conseillé)
+            window.scrollTo(0, 0);
+        }
+    </script>
 
 </body>
 </html>
