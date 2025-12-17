@@ -795,11 +795,16 @@
         }
 
         function addCustomToCart() {
+            // 1. On construit le nom complet avec les options choisies
             let fullName = `Custom Build: ${customState.chassisName} / ${customState.switchName} / ${customState.layoutName}`;
-            let finalPrice = customState.basePrice + customState.chassisPrice + customState.switchPrice + customState.layoutPrice;
             
-            // Note: On ne met pas d'ID Stripe car c'est un produit custom
-            addToCart(fullName, finalPrice, null);
+            // 2. IMPORTANT : Remplacez ce qui est entre guillemets par l'ID de votre produit créé sur Stripe
+            // Vous devez avoir créé un produit "Clavier Custom" à prix fixe dans votre dashboard Stripe
+            let stripePriceId = "price_1SfJ2pAVfPq4Ay0UmQz5VwA1"; 
+
+            // 3. On ajoute au panier avec l'ID Stripe (ce qui corrige l'erreur)
+            // Note : Le prix affiché sera celui de base (ex: 99€) pour débloquer le paiement
+            addToCart(fullName, customState.basePrice, stripePriceId);
         }
 
         /* --- 4. GESTION DU PANIER & PAIEMENT --- */
