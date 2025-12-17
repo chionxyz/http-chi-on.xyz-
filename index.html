@@ -770,8 +770,13 @@
         }
 
 
-        /* --- GESTION DU PANIER --- */
-        let cart = [];
+/* --- GESTION DU PANIER (AVEC SAUVEGARDE) --- */
+        
+        // 1. On récupère le panier sauvegardé OU on crée une liste vide
+        let cart = JSON.parse(localStorage.getItem('chi-on-cart')) || [];
+
+        // 2. IMPORTANT : On met à jour l'affichage tout de suite (pour que le badge affiche le nombre au rechargement de la page)
+        updateCartUI();
 
         function toggleCart() {
             const sidebar = document.getElementById('cart-sidebar');
@@ -782,6 +787,10 @@
 
         function addToCart(name, price) {
             cart.push({ name: name, price: price });
+            
+            // 3. SAUVEGARDE : On enregistre dans la mémoire locale
+            localStorage.setItem('chi-on-cart', JSON.stringify(cart));
+            
             updateCartUI();
             showToast();
         }
@@ -817,6 +826,10 @@
 
         function removeFromCart(index) {
             cart.splice(index, 1);
+            
+            // 4. SAUVEGARDE : On met à jour la mémoire après suppression
+            localStorage.setItem('chi-on-cart', JSON.stringify(cart));
+            
             updateCartUI();
         }
 
