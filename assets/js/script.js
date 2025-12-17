@@ -113,7 +113,7 @@ function checkoutStripe() {
     // C'est ici que le client choisira ses options (Switches, Châssis) dans le menu Stripe
     
     // ⚠️ REMPLACEZ L'URL CI-DESSOUS PAR VOTRE LIEN "buy.stripe.com..." CRÉÉ PRÉCÉDEMMENT ⚠️
-    window.location.href = "https://buy.stripe.com/VOTRE_LIEN_ICI";
+    window.location.href = "https://buy.stripe.com/test_6oU00i1xM5cHgUv8bidjO00";
 }
 
 function showToast() {
