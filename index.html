@@ -3,40 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi-On | Coming Soon</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background-color: #050505;
-            color: #fff;
-            font-family: 'Montserrat', sans-serif;
-            height: 100vh;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-        h1 { font-size: 4em; font-style: italic; margin: 0; text-transform: uppercase; }
-        span { color: #ce181e; }
-        p { color: #888; margin-top: 20px; font-family: sans-serif; }
-        .loader {
-            border: 4px solid #111;
-            border-top: 4px solid #ce181e;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin-top: 40px;
-        }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    </style>
+    <title>Chi-On.xyz | Claviers Mécaniques & Accessoires</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="icon" href="assets/img/logo.png" type="image/png">
+    
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <h1>Chi-On<span>.xyz</span></h1>
-    <p>Le site officiel arrive très bientôt.</p>
-    <p>Préparez vos setups.</p>
-    <div class="loader"></div>
+
+    <header>
+        <div class="logo" onclick="switchTab('accueil')">
+            <img src="assets/img/logo.png" alt="Logo Chi-On">
+        </div>
+
+        <nav>
+            <a href="#" onclick="switchTab('accueil')" id="nav-accueil" class="active">Accueil</a>
+            <a href="#" onclick="switchTab('claviers')" id="nav-claviers">Nos Claviers</a>
+            <a href="#" onclick="switchTab('custom')" id="nav-custom">Customisation</a>
+            <a href="#" onclick="switchTab('support')" id="nav-support">Support</a>
+            
+            <a onclick="toggleCart()" class="cart-btn" style="margin-left: 20px;">
+                <span>Panier</span>
+                <span id="cart-count" class="cart-count">0</span>
+            </a>
+        </nav>
+    </header>
+
+    <div id="toast" class="toast">
+        <span>✓ Produit ajouté !</span>
+    </div>
+
+    <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>VOTRE PANIER</h3>
+            <button class="close-cart" onclick="toggleCart()">×</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="cart-total-price">0.00 €</span>
+            </div>
+            <button class="cta-button" style="width: 100%; border: none;" onclick="checkoutStripe()">Payer maintenant</button>
+        </div>
+    </div>
+
+    <div id="page-accueil" class="page-section active">
+        <div class="hero">
+            <h1>Dominez<br><span>Le Jeu</span>.</h1>
+            <p>L'excellence du format 60%.</p>
+            <a onclick="switchTab('claviers')" class="cta-button">Voir la collection</a>
+        </div>
+        <div class="features">
+            <div class="feature-item"><h3>Expédition Rapide</h3><p>Depuis la Belgique.</p></div>
+            <div class="feature-item"><h3>Qualité Premium</h3><p>Châssis Alu & Keycaps PBT.</p></div>
+            <div class="feature-item"><h3>Hot-Swappable</h3><p>Changez vos switches.</p></div>
+        </div>
+    </div>
+
+<div id="page-claviers" class="page-section">
+        <div class="container">
+            <h2>La Sélection Belge</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <span class="badge">Exclusif BE</span>
+                    <img src="https://placehold.co/400x300/1a1a1a/ce181e?text=Neon+60+AZERTY+BE" alt="Clavier Belge">
+                    <div class="card-content">
+                        <h3>Chi-On Neon 60 (BE)</h3>
+                        <p>Layout AZERTY Belge. Switches Red Linéaires.</p>
+                        <span class="price">50.00 €</span>
+                        <button class="buy-btn" onclick="buyProduct('neon')">Acheter Maintenant</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://placehold.co/400x300/1a1a1a/ce181e?text=Stealth+Pro+ISO" alt="Clavier 2">
+                    <div class="card-content">
+                        <h3>Stealth Pro (ISO)</h3>
+                        <p>Format ISO compatible touches BE/FR. Switches Brown.</p>
+                        <span class="price">129.99 €</span>
+                        <button class="buy-btn" onclick="buyProduct('stealth')">Acheter Maintenant</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <span class="badge">Nouveau</span>
+                    <img src="https://placehold.co/400x300/1a1a1a/ce181e?text=Keycaps+BE" alt="Clavier 3">
+                    <div class="card-content">
+                        <h3>Keycaps AZERTY BE</h3>
+                        <p>Set de touches PBT complet.</p>
+                        <span class="price">44.99 €</span>
+                        <button class="buy-btn" onclick="buyProduct('keycaps')">Acheter Maintenant</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-custom" class="page-section">
+        <div class="container">
+            <h2>Créez le Vôtre</h2>
+            <div class="config-wrapper">
+                <div class="config-preview">
+                    <img src="assets/img/clavier.jpg" alt="Aperçu Clavier Custom" style="border-radius: 5px; margin-bottom: 20px;">
+                    
+                    <div class="live-price" id="custom-price-display">À partir de 99.00 <span>€</span></div>
+                    
+                    <p style="color:#aaa; font-size:0.9em; margin-bottom:20px;">
+                        *Configurez les options finales (Châssis, Switches) à l'étape suivante sur la page sécurisée Stripe.
+                    </p>
+
+                    <button class="cta-button" style="width: 100%; border:none;" onclick="buyProduct('custom')">
+                        Configurer & Commander
+                    </button>
+                </div>
+
+                <div class="config-options">
+                    <div class="option-group">
+                        <span class="option-title">1. Châssis (Base)</span>
+                        <div class="options-grid">
+                            <button class="option-btn selected" onclick="selectOption(this)">Standard Black</button>
+                            <button class="option-btn" onclick="selectOption(this)">Arctic White (+10€ sur Stripe)</button>
+                            <button class="option-btn" onclick="selectOption(this)">Alu Premium (+30€ sur Stripe)</button>
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <span class="option-title">2. Switches (Mécanique)</span>
+                        <div class="options-grid">
+                            <button class="option-btn selected" onclick="selectOption(this)">Red (Rapide)</button>
+                            <button class="option-btn" onclick="selectOption(this)">Brown (Tactile)</button>
+                            <button class="option-btn" onclick="selectOption(this)">Blue (Clicky)</button>
+                            <button class="option-btn" onclick="selectOption(this)">Silent Red (+15€)</button>
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <span class="option-title">3. Disposition</span>
+                        <div class="options-grid">
+                            <button class="option-btn selected" onclick="selectOption(this)">ISO (Grande Entrée)</button>
+                            <button class="option-btn" onclick="selectOption(this)">ANSI (Petite Entrée)</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-support" class="page-section">
+        <div class="container">
+            <h2>Contactez le Support</h2>
+            <p style="text-align: center; margin-bottom: 40px; color: #aaa;">Une question sur votre commande ou un conseil technique ?</p>
+            
+            <div class="contact-box" id="contact-container">
+                <form id="contactForm" onsubmit="envoyerFormulaire(event)">
+                    <div class="form-group">
+                        <label for="nom">Nom / Pseudo</label>
+                        <input type="text" id="nom" class="form-input" placeholder="Votre nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Adresse Email</label>
+                        <input type="email" id="email" class="form-input" placeholder="exemple@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sujet">Sujet</label>
+                        <input type="text" id="sujet" class="form-input" placeholder="Numéro de commande, Question..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-input" placeholder="Comment pouvons-nous vous aider ?" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button" style="width: 100%; border: none; margin-top: 10px;">Envoyer le message</button>
+                </form>
+            </div>
+
+            <div id="success-message" class="contact-box success-message">
+                <div class="success-icon">✓</div>
+                <h3 style="color: #fff; margin-bottom: 15px;">Message Envoyé !</h3>
+                <p>Merci de nous avoir contactés. L'équipe Chi-On vous répondra sous 24h.</p>
+                <button onclick="resetForm()" class="buy-btn" style="background:transparent; color:#ce181e; border: 1px solid #ce181e; margin: 20px auto 0; display:inline-block;">Envoyer un autre message</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-mentions" class="page-section">
+        <div class="container">
+            <h2>Mentions Légales</h2>
+            <div class="legal-text">
+                <h3>1. Éditeur du site</h3>
+                <p>Le site <strong>Chi-On.xyz</strong> est édité par Chi-On.</p>
+                </div>
+        </div>
+    </div>
+
+    <div id="page-cgv" class="page-section">
+        <div class="container">
+            <h2>Conditions Générales de Vente</h2>
+            <div class="legal-text">
+                <h3>1. Objet et Acceptation</h3>
+                <p>Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles.</p>
+                </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 <strong>Chi-On.xyz</strong>. Conçu pour la performance.</p>
+        <div class="footer-links">
+            <a onclick="switchTab('mentions')" class="footer-link">Mentions Légales</a>
+            <a onclick="switchTab('cgv')" class="footer-link">CGV</a>
+        </div>
+    </footer>
+
+    <script src="https://js.stripe.com/v3/"></script>
+    
+    <script src="assets/js/script.js"></script>
+
 </body>
 </html>
